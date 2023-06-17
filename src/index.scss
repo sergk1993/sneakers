@@ -1,5 +1,6 @@
 @import './Components/Header/Header.module';
-@import './scss/fonts'; 
+@import './scss/fonts';
+@import './scss/variable';
 
 
 html {
@@ -80,6 +81,8 @@ ol[class] {
 	width: 100%;
 	height: 100%;
 	margin: 0 auto;
+	overflow-x: hidden;
+	position: relative;
 }
 
 .mainWrapper {
@@ -88,3 +91,10 @@ ol[class] {
 	flex-direction: column;
 	justify-content: space-between;
 }
+
+.burgerMenuBtn,
+.asidePanelShowByClick {
+	display: none;
+}
+
+
