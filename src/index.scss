@@ -1,3 +1,7 @@
+@import './Components/Header/Header.module';
+@import './scss/fonts'; 
+
+
 html {
 	box-sizing: border-box;
 }
@@ -9,6 +13,8 @@ html {
 }
 
 body {
+	font-family: 'Inter-Regular';
+	font-weight: 400;
 	height: 100vh;
 	scroll-behavior: smooth;
 	text-rendering: optimizeSpeed;

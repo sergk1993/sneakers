@@ -1,0 +1,77 @@
+@import '../../scss/variable';
+
+.headerMain {
+	padding: 50px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* левая часть */
+.headerTitle {
+	display: flex;
+	max-width: 250px;
+}
+
+.headerTitle img {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+	margin-right: 20px;
+}
+
+.headerTitleWrapper h1 {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 24px;
+	text-transform: uppercase;
+}
+
+.headerTitleWrapper p {
+	font-size: 14px;
+	line-height: 17px;
+	color: $color-main-text;
+}
+
+
+/* правая часть */
+
+.headerAboutIcons {
+	display: flex;
+	align-items: center;
+}
+
+.headerAboutIcons svg {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.headerAboutIcons svg:not(:last-child) {
+	margin-right: 10px;
+}
+
+.headerAboutIcons svg:first-child {
+	margin-right: 5px;
+}
+
+
+.headerAboutCart {
+	display: flex;
+	align-items: center;
+	margin-right: 8px;
+}
+
+.headerAboutCart svg {
+	margin-right: 5px;
+}
+
+.headerAboutCart p {
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 15px;
+}
+
+.headerAboutCart p span {
+	margin-left: 3px;
+}
