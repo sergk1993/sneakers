@@ -1,5 +1,5 @@
 import errorImg from "../../assets/img/error.png";
-import styles from "./ErrorPage.module.css";
+import styles from './_ErrorPage.module.scss';
 
 function ErrorPage() {
   return (

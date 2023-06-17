@@ -1,15 +1,19 @@
 import { Outlet } from "react-router-dom";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function Root() {
   return (
-    <div className="mainWrapper">
-      <header>header</header>
+    <div className="container">
+      <div className="mainWrapper">
+        <Header />
 
-      <main>
-        <Outlet />
-      </main>
+        <main>
+          <Outlet />
+        </main>
 
-      <footer>footer</footer>
+        <Footer />
+      </div>
     </div>
   );
 }

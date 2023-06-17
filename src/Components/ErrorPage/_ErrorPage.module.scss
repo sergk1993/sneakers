@@ -6,11 +6,14 @@
 	width: 100%;
 	height: 100vh;
 	text-align: center;
+
 }
 
-.errorWrapper img {
-	width: 150px;
-	height: 150px;
-	display: block;
-	margin-bottom: 15px;
+.errorWrapper {
+	& img {
+		width: 150px;
+		height: 150px;
+		display: block;
+		margin-bottom: 15px;
+	}
 }
