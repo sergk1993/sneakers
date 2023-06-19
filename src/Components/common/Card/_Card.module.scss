@@ -1,0 +1,110 @@
+@import '../../../scss/variable';
+
+.cardMain {
+	height: 260px;
+	display: inline-block;
+	padding: 10px;
+	background-color: $color-main-whiteBg;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 5px;
+
+
+	img {
+		width: 100%;
+		height: 160px;
+		object-fit: contain;
+		margin: 0 auto;
+		margin-bottom: 5px;
+	}
+
+	h3 {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+		margin-bottom: 5px;
+	}
+
+	/* иконка с верху favorite */
+	&__favoriteBtn {
+		background-color: transparent;
+		border: transparent;
+		text-align-last: left;
+		position: absolute;
+		left: 10px;
+		top: 10px;
+
+		svg {
+			width: 30px;
+			height: 30px;
+			fill: transparent;
+			stroke: $color-main-svgBtn;
+			stroke-width: 1em;
+			cursor: pointer;
+
+			@media screen and (min-width: 780px) {
+				&:hover {
+					stroke: $color-main-green;
+				}
+			}
+
+		}
+
+
+
+
+	}
+
+	&__priceBox {
+		display: flex;
+		justify-content: space-between;
+
+		p {
+			font-weight: 500;
+			font-size: 11px;
+			line-height: 13px;
+			text-transform: uppercase;
+			color: $color-main-subtext;
+
+			span {
+				display: block;
+				font-weight: 700;
+				font-size: 14px;
+				line-height: 17px;
+				color: $color-main-black;
+			}
+		}
+
+		/* кнопка у карточки с низу  */
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			background: $color-main-whiteBg;
+			border: 1px solid $color-main-whiteBg;
+			border-radius: 8px;
+			cursor: pointer;
+			background-color: $color-main-btn-gray;
+
+			@media screen and (min-width: 780px) {
+				&:hover {
+					background-color: $color-main-green;
+				}
+			}
+
+			svg path {
+				fill: $color-main-whiteBg;
+			}
+			
+		}
+
+
+	}
+
+
+
+}

@@ -16,7 +16,7 @@
 		cursor: pointer;
 		display: block;
 		border-radius: 5px;
-		background-color: $color-main-btn;
+		background-color:$color-main-btn-gray;
 		display: block;
 
 		& span {
@@ -25,7 +25,7 @@
 			left: 3px;
 			width: 80%;
 			height: 2px;
-			background-color: $color-main-btn-line;
+			background-color: $color-main-btn-line-gray;
 			transition: .2s cubic-bezier(.8, .5, .2, 1.4);
 			transition-duration: 500ms
 		}
