@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import errorImg from "../../assets/img/error.png";
-import styles from './_ErrorPage.module.scss';
+import styles from "./_ErrorPage.module.scss";
 
 function ErrorPage() {
   return (
@@ -7,6 +8,7 @@ function ErrorPage() {
       <div className={styles.errorWrapper}>
         <img src={errorImg} alt="Error img" />
         <p> Oops... Something wrong</p>
+        <Link to="/">Вернуться на главную</Link>
       </div>
     </section>
   );

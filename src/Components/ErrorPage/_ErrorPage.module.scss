@@ -1,3 +1,5 @@
+@import '../../scss//variable';
+
 .errorMain {
 	display: flex;
 	justify-content: center;
@@ -6,7 +8,6 @@
 	width: 100%;
 	height: 100vh;
 	text-align: center;
-
 }
 
 .errorWrapper {
@@ -14,6 +15,27 @@
 		width: 150px;
 		height: 150px;
 		display: block;
+		margin: 0 auto;
 		margin-bottom: 15px;
+	}
+
+	p {
+		margin-bottom: 10px;
+	}
+
+	a {
+		width: 100%;
+		display: block;
+		cursor: pointer;
+		padding: 10px;
+		background-color: $color-main-btn-gray;
+		border-radius: 5px;
+		color: $color-main-blackText;
+		transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+
+		&:hover {
+			background-color: $color-btn-black;
+			color: $color-main-whiteText;
+		}
 	}
 }
