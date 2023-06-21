@@ -1,0 +1,310 @@
+@charset "UTF-8";
+/* text */
+/* btn */
+/* aside */
+/* skeletons */
+.asideBurgerPanel,
+.asideBurgerPanelBg {
+  display: none;
+}
+
+.headerMain {
+  padding: 50px 0;
+}
+
+.headerMainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* левая часть */
+.headerTitle {
+  display: flex;
+  align-items: center;
+  max-width: 250px;
+}
+.headerTitle img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 20px;
+}
+.headerTitle .headerTitleWrapper h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.headerTitle .headerTitleWrapper p {
+  font-size: 14px;
+  line-height: 17px;
+  color: #9D9D9D;
+}
+
+/* правая часть */
+.headerAboutIcons {
+  display: flex;
+  align-items: center;
+}
+.headerAboutIcons svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 111;
+}
+.headerAboutIcons svg:not(:last-child) {
+  margin-right: 10px;
+}
+.headerAboutIcons svg:first-child {
+  margin-right: 5px;
+}
+
+.headerAboutCart {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+.headerAboutCart svg {
+  margin-right: 5px;
+  stroke: #9B9B9B;
+}
+.headerAboutCart p {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+.headerAboutCart p span {
+  margin-left: 3px;
+}
+
+.headerProfileSvg {
+  fill: #9B9B9B;
+}
+
+.headerFavoriteSvg {
+  stroke: #9B9B9B;
+  stroke-width: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  /* левая часть */
+  .headerMain {
+    padding: 30px 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* левая часть */
+  .headerMain {
+    padding: 20px 0;
+  }
+  .headerTitle img {
+    margin-right: 10px;
+  }
+  .headerTitleWrapper h1 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .headerTitleWrapper p {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  .headerAboutIcons {
+    position: absolute;
+    z-index: 11;
+    right: 45px;
+    padding: 8px;
+  }
+  .headerAboutCart {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .headerAboutCart svg {
+    margin-right: 5px;
+    stroke: #000;
+  }
+  .headerAboutCart.activeCart {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+  .headerFavoriteSvg {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .activeFavoriteSvg {
+    opacity: 1;
+    visibility: visible;
+    stroke: #000;
+    transition-delay: 0.4s;
+  }
+  .headerProfileSvg {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.6s;
+    fill: #000;
+  }
+  .headerProfileSvg.activeProfileSvg {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0.6s;
+  }
+  /* боковая панель */
+  .asideBurgerPanelBg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out, background-color 300ms ease-in-out, visibility 1s ease;
+    z-index: 10;
+    visibility: hidden;
+  }
+  .asideBurgerPanelBg.activeBurgerPanelBg {
+    background-color: rgba(0, 0, 0, 0.8392156863);
+    opacity: 1;
+    visibility: visible;
+  }
+  .asideBurgerPanel {
+    display: block;
+    position: absolute;
+    right: -350px;
+    display: block;
+    width: 230px;
+    height: 100vh;
+    background: #ffffff;
+    transition: right 0.4s ease-in-out;
+    z-index: 11;
+  }
+  .asideBurgerPanel.active {
+    right: 0px;
+  }
+}
+/* 
+Названия шрифтов 
+Inter-Regular
+
+*/
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Regular.woff2") format("woff2"), url("../assets/fonts/Inter-Regular.woff") format("woff");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-SemiBold.woff2") format("woff2"), url("../assets/fonts/Inter-SemiBold.woff") format("woff");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Bold.woff2") format("woff2"), url("../assets/fonts/Inter-Bold.woff") format("woff");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+/* text */
+/* btn */
+/* aside */
+/* skeletons */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Inter";
+  font-weight: 400;
+  height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  background-color: rgba(226, 225, 225, 0.5960784314);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container {
+  max-width: 1370px;
+  padding: 0 15px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.mainWrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.burgerMenuBtn,
+.asidePanelShowByClick {
+  display: none;
+}

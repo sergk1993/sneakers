@@ -1,34 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { IDataProducts } from "../../Types/Types";
 import Card from "../common/Card/Card";
 import styles from "./_Products.module.scss";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../store/productsSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import CardSkeleton from "../common/CardSceleton/CardSceleton";
+import fetchErrorImg from "../../assets/img/404.png";
 
 function Products() {
-  const [getDataUser, setDataUser] = useState<IDataProducts | any>([]);
-  useEffect(() => {
-    try {
-      fetch("https://63c6490edcdc478e15be59ac.mockapi.io/sneakers")
-        .then((data) => data.json())
-        .then((data) => setDataUser(data));
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+  const dispatch = useDispatch();
+  const allUser = useSelector((state: RootState) => state.products.products);
+  const isLoading = useSelector((state: RootState) => state.products.isLoading);
+  const fetchError = useSelector((state: RootState) => state.products.error);
+
+  const handlerAddProduct = (payload: IDataProducts) => {
+    dispatch(addProduct({ ...payload }));
+  };
+  const skeletons = [...new Array(12)].map((_, i) => <CardSkeleton key={i} />);
 
   return (
     <section>
       <div className={styles.productsWrapper}>
-        {getDataUser.map((items: IDataProducts) => {
-          return (
-            <Card
-              key={items.id}
-              id={items.id}
-              img={items.image}
-              nameProduct={items.name}
-              price={items.price}
-            />
-          );
-        })}
+        {fetchError ? (
+          <div className={styles.fetchError}>
+            <span>{fetchError}</span>
+            <img src={fetchErrorImg} alt="" />
+          </div>
+        ) : (
+          <>
+            {isLoading
+              ? skeletons
+              : allUser.map((items: IDataProducts) => {
+                  return (
+                    <Card
+                      allProps={items}
+                      handlerAddProduct={handlerAddProduct}
+                      key={items.id}
+                      id={items.id}
+                      img={items.image}
+                      nameProduct={items.name}
+                      price={items.price}
+                    />
+                  );
+                })}
+          </>
+        )}
       </div>
     </section>
   );

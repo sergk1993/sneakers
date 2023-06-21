@@ -5,4 +5,5 @@ export interface IDataProducts {
   about: string,
   price: number,
   size: number,
+  count: number
 }

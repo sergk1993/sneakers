@@ -1,15 +1,18 @@
 import styles from "./_Card.module.scss";
 import noPhoto from "../../../assets/img/noSneaker.png";
 import { Link } from "react-router-dom";
+import { IDataProducts } from '../../../Types/Types';
 
 type CardType = {
   img: string;
   nameProduct: string;
   price: string | number;
   id: number;
+  handlerAddProduct: (payload: IDataProducts) => void;
+  allProps: IDataProducts,
 };
 
-function Card({ img, nameProduct, price, id }: CardType) {
+function Card({ img, nameProduct, price, id , handlerAddProduct, allProps}: CardType) {
   return (
     <>
       <article className={styles.cardMain}>
@@ -29,7 +32,7 @@ function Card({ img, nameProduct, price, id }: CardType) {
             цена: <span>{price}</span>
           </p>
 
-          <button>
+          <button onClick={() => handlerAddProduct(allProps)}>
             <svg
               viewBox="0 0 12 12"
               fill="none"
