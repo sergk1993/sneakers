@@ -22,11 +22,12 @@
 	align-items: center;
 	max-width: 250px;
 
-	& img {
+	& svg {
 		width: 40px;
 		height: 40px;
 		object-fit: contain;
-		margin-right: 20px;
+		margin-right: 5px;
+		transform: rotate(30deg);
 	}
 
 	& .headerTitleWrapper h1 {
@@ -34,12 +35,14 @@
 		font-size: 20px;
 		line-height: 24px;
 		text-transform: uppercase;
+		color: #079784;
 	}
 
 	& .headerTitleWrapper p {
 		font-size: 14px;
 		line-height: 17px;
 		color: $color-main-subtext;
+		
 	}
 }
 
