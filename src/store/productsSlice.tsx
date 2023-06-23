@@ -6,6 +6,9 @@ const initialState = {
   cart: [] as Array<IDataProducts>,
   isLoading: false as boolean,
   error: "" as any,
+  cartCount: 0 as number,
+  favorites: [] as Array<IDataProducts>,
+  favoritCounter: 0 as number,
 };
 
 export const fetchProducts: any = createAsyncThunk(
@@ -29,25 +32,71 @@ export const fetchProducts: any = createAsyncThunk(
   }
 );
 
+function AddProductFunc(
+  initialStoreProperty: Array<IDataProducts>,
+  action: { payload: IDataProducts },
+  counter: number
+) {
+  let findTheSameProduct = initialStoreProperty.findIndex(
+    (el) => el.id === action.payload.id
+  );
+
+  if (findTheSameProduct >= 0) {
+    initialStoreProperty[findTheSameProduct].count += 1;
+  } else {
+    initialStoreProperty.push({ ...action.payload, count: 1 });
+  }
+
+  return initialStoreProperty;
+}
+
+function toggleProductFunc(
+  store: Array<IDataProducts>,
+  action: { payload: IDataProducts }
+) {
+  return (store = store.filter((el) => el.id !== action.payload.id));
+}
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProduct: (store, action) => {
-      let findTheSameProductInCart = store.cart.findIndex(
+    addCart: (store, action) => {
+      const findTheSameProduct = store.cart.findIndex(
         (el) => el.id === action.payload.id
       );
-
-      if (findTheSameProductInCart === -1) {
-        store.cart.push({ ...action.payload, count: 1 });
-      } else {
-        store.cart[findTheSameProductInCart].count += 1;
+      store.cart = AddProductFunc(store.cart, action, store.cartCount);
+      if (findTheSameProduct === -1) {
+        store.cartCount = store.cartCount + 1;
       }
     },
 
-    removeProduct: (store, action) => {},
+    removeCart: (store, action) => {
+      const find = store.cart.findIndex((el) => el.id === action.payload.id);
 
-    toggleProduct: (store, action) => {},
+      if (find !== -1) {
+        if (store.cart[find].count > 1) {
+          store.cart[find].count -= 1;
+        } else {
+          store.cart = store.cart.filter((el) => el.id !== action.payload.id);
+          store.cartCount -= 1;
+        }
+      }
+    },
+
+    addFavorites: (store, action) => {
+      store.favorites = AddProductFunc(
+        store.favorites,
+        action,
+        store.favoritCounter
+      );
+      store.favoritCounter = store.favoritCounter + 1;
+    },
+
+    toggleFavorite: (store, action) => {
+      store.favorites = toggleProductFunc(store.favorites, action);
+      store.favoritCounter = store.favoritCounter - 1;
+    },
   },
 
   extraReducers: {
@@ -66,10 +115,6 @@ const productsSlice = createSlice({
   },
 });
 
-export const {
-  addProduct,
-  removeProduct,
-  toggleProduct,
-  // isloading,
-} = productsSlice.actions;
+export const { addCart, removeCart, toggleFavorite, addFavorites } =
+  productsSlice.actions;
 export default productsSlice.reducer;

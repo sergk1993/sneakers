@@ -1,6 +1,7 @@
 .productsWrapper {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	justify-content: center;
 
 	gap: 15px;
 	row-gap: 25px;
@@ -8,11 +9,14 @@
 	margin: 0 auto;
 
 	@media screen and (max-width: 780px) {
-		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+		grid-template-columns: repeat(3, 148px);
+		grid-template-rows: repeat(1, 260px);
 	}
 
 	@media screen and (max-width: 480px) {
-		grid-template-columns: repeat(1, 1fr);
+		grid-template-columns: repeat(2, 140px);
+		grid-template-rows: repeat(1, 220px);
 	}
 
 }

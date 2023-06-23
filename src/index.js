@@ -7,6 +7,8 @@ import Root from './Components/Root/Root';
 
 import store from './store/store';
 import { Provider } from 'react-redux';
+import Cart from './Components/Cart/Cart';
+import Favorites from './Components/Favorites/Favorites';
 
 
 const router = createBrowserRouter([
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <App />,
+            },
+            {
+                path: 'cart',
+                element: <Cart />,
+            },
+            {
+                path: 'favorite',
+                element: <Favorites />,
             },
         ]
     },

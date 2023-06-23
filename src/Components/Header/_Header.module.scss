@@ -9,6 +9,7 @@
 	padding: 50px 0;
 
 }
+
 .headerMainWrapper {
 	display: flex;
 	align-items: center;
@@ -57,16 +58,13 @@
 		height: 20px;
 		cursor: pointer;
 		z-index: 111;
-
 	}
 
 	& svg:not(:last-child) {
 		margin-right: 10px;
 	}
 
-	& svg:first-child {
-		margin-right: 5px;
-	}
+
 }
 
 
@@ -93,14 +91,53 @@
 
 }
 
+.headerAboutCartLink {
+	position: relative;
+
+	span {
+		position: absolute;
+		top: -23px;
+		right: -10px;
+		width: 22px;
+		height: 22px;
+		background-color: #c5c5c5;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 10px;
+	}
+}
+
+.headerFavoriteLink{
+	position: relative;
+	margin-right: 10px;
+
+	span {
+		position: absolute;
+    top: -23px;
+    right: -10px;
+    width: 22px;
+    height: 22px;
+    background-color: #c5c5c5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+	}
+	svg {
+		stroke: #9B9B9B;
+		stroke-width: 18px;
+	}
+}
+
+
 .headerProfileSvg {
 	fill: #9B9B9B;
 }
 
-.headerFavoriteSvg {
-	stroke: #9B9B9B;
-	stroke-width: 18px;
-}
+
 
 
 
@@ -164,18 +201,17 @@
 
 
 
-	.headerFavoriteSvg {
+	.headerFavoriteLink  {
 		visibility: hidden;
 		opacity: 0;
 		transition: opacity 0.4s;
 	}
 
-	.activeFavoriteSvg {
+	 .activeFavoriteSvg  {
 		opacity: 1;
 		visibility: visible;
 		stroke: #000;
 		transition-delay: 0.4s;
-
 	}
 
 

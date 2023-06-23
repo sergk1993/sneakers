@@ -1,20 +1,42 @@
-@import '../../../scss/variable';
+@import "../../../scss/variable";
 
 .cardMain {
-	height: 260px;
 	display: inline-block;
 	padding: 10px;
+	padding-top: 15px;
 	background-color: $color-main-whiteBg;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	border-radius: 5px;
+	width: 100%;
 
+	em {
+		font-style: normal;
+		color: #000;
+		font-weight: 600;
+		font-size: 8px;
+	}
+
+	&__countCards {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		background-color: $color-btn-active;
+		font-size: 10px;
+		z-index: 5;
+		color: $color-main-whiteText;
+	}
 
 	img {
 		width: 100%;
-		height: 160px;
 		object-fit: contain;
 		margin: 0 auto;
 		margin-bottom: 5px;
@@ -33,8 +55,8 @@
 		border: transparent;
 		text-align-last: left;
 		position: absolute;
-		left: 10px;
-		top: 10px;
+		left: 0;
+		top: 5px;
 
 		svg {
 			width: 30px;
@@ -44,67 +66,123 @@
 			stroke-width: 1em;
 			cursor: pointer;
 
-			@media screen and (min-width: 780px) {
-				&:hover {
-					stroke: $color-main-green;
-				}
+			&.active {
+				stroke: $color-btn-activeFavorite;
+				fill: $color-btn-activeFavorite;
 			}
 
+			@media screen and (min-width: 780px) {
+				&:hover {
+					stroke: $color-btn-favorite-icons;
+				}
+
+				&.active:hover {
+					stroke: $color-btn-darkRed;
+					fill: $color-btn-activeFavorite;
+				}
+			}
 		}
-
-
-
-
 	}
 
-	&__priceBox {
+	@media screen and (max-width: 780px) {
+		img {
+			max-width: 150px;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		img {
+			max-width: 80px;
+		}
+	}
+}
+
+.priceBox {
+	display: flex;
+	justify-content: space-between;
+
+	&__priceBoxBtn {
 		display: flex;
-		justify-content: space-between;
+		align-items: flex-end;
 
-		p {
-			font-weight: 500;
-			font-size: 11px;
-			line-height: 13px;
-			text-transform: uppercase;
-			color: $color-main-subtext;
-
-			span {
-				display: block;
-				font-weight: 700;
-				font-size: 14px;
-				line-height: 17px;
-				color: $color-main-black;
-			}
+		button:first-child {
+			margin-right: 5px;
 		}
-
-		/* кнопка у карточки с низу  */
-		button {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 30px;
-			height: 30px;
-			background: $color-main-whiteBg;
-			border: 1px solid $color-main-whiteBg;
-			border-radius: 8px;
-			cursor: pointer;
-			background-color: $color-main-btn-gray;
-
-			@media screen and (min-width: 780px) {
-				&:hover {
-					background-color: $color-main-green;
-				}
-			}
-
-			svg path {
-				fill: $color-main-whiteBg;
-			}
-			
-		}
-
-
 	}
 
+	b {
+		display: block;
+	}
 
+	&__countPrice {
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 17px;
+		color: $color-main-black;
+		margin-right: 3px;
+	}
 
+	p {
+		font-weight: 500;
+		font-size: 10px;
+		line-height: 13px;
+		text-transform: uppercase;
+		color: $color-main-subtext;
+	}
+
+	/* кнопка у карточки с низу  */
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 25px;
+		height: 25px;
+		background: $color-main-whiteBg;
+		border: 1px solid $color-main-whiteBg;
+		border-radius: 8px;
+		cursor: pointer;
+		background-color: $color-main-btn-gray;
+		position: relative;
+		top: 0;
+		transition: top 0.1s ease-out, box-shadow 0.1s ease-in-out;
+
+		@media screen and (min-width: 780px) {
+			&:hover {
+				background-color: $color-main-svgBtn;
+			}
+		}
+
+		svg path {
+			fill: $color-main-whiteBg;
+		}
+
+		&:active.activePlus {
+			position: relative;
+			top: 2px;
+			z-index: 10;
+			box-shadow: inset 1px 1px 10px #555;
+		}
+
+		&:active.activeMinus {
+			position: relative;
+			top: 2px;
+			z-index: 10;
+			box-shadow: inset 1px 1px 10px #555;
+		}
+	}
+
+	@media screen and (max-width: 780px) {
+		& {
+			display: block;
+
+			p {
+				margin-bottom: 5px;
+			}
+		}
+
+		&__countPrice {
+			font-size: 12px;
+			line-height: 15px;
+		}
+	}
 }

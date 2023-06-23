@@ -3,10 +3,22 @@ import headerIcon from "../../assets/img/sneakersIcons.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import BurgerBtn from "../common/BurgerBtn/BurgerBtn";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 function Header() {
   const [clickBtn, setClickBtn] = useState(false);
+  const cartCount = useSelector(
+    (state: RootState) => state.products.cartCount
+  );
 
+const handlerClick = () => {
+
+}
+
+ const favoriteCount = useSelector(
+    (state: RootState) => state.products.favoritCounter
+  );
   return (
     <>
       <BurgerBtn clickBtn={clickBtn} setClickBtn={setClickBtn} />
@@ -27,7 +39,7 @@ function Header() {
       <header className={styles.headerMain}>
         <div className="container">
           <div className={styles.headerMainWrapper}>
-            <Link className={styles.headerTitle} to="/" title="На главную ">
+            <Link className={styles.headerTitle} to="/" title="На главную " >
               <img src={headerIcon} alt="header icon sneakers" />
               <div className={styles.headerTitleWrapper}>
                 <h1>Sneakers</h1>
@@ -41,7 +53,8 @@ function Header() {
                   clickBtn ? styles.activeCart : ""
                 }`}
               >
-                <Link to="cart">
+                <Link to="cart" className={styles.headerAboutCartLink} onClick={() =>  setClickBtn(false)}>
+                  <span>{cartCount}</span>
                   <svg
                     width="20"
                     height="20"
@@ -73,11 +86,13 @@ function Header() {
                   12364 <span> тенг</span>
                 </p>
               </div>
-              <Link to="favorite">
-                <svg
-                  className={`${styles.headerFavoriteSvg}  ${
+              <Link to="favorite"  className={`${styles.headerFavoriteLink}  ${
                     clickBtn ? styles.activeFavoriteSvg : ""
-                  }`}
+                  }`} onClick={() =>  setClickBtn(false)}>
+                <span >{favoriteCount}</span>
+
+                <svg
+                 
                   fill="none"
                   viewBox="0 0 192 192"
                   xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +100,7 @@ function Header() {
                   <path d="M60.732 29.7C41.107 29.7 22 39.7 22 67.41c0 27.29 45.274 67.29 74 94.89 28.744-27.6 74-67.6 74-94.89 0-27.71-19.092-37.71-38.695-37.71C116 29.7 104.325 41.575 96 54.066 87.638 41.516 76 29.7 60.732 29.7z" />
                 </svg>
               </Link>
-              <Link to="profile">
+              <Link to="profile" onClick={() =>  setClickBtn(false)}>
                 <svg
                   className={`${styles.headerProfileSvg}  ${
                     clickBtn ? styles.activeProfileSvg : ""
