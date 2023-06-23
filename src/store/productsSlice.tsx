@@ -57,6 +57,11 @@ function toggleProductFunc(
   return (store = store.filter((el) => el.id !== action.payload.id));
 }
 
+function deleteCartItem(store: Array<IDataProducts>, itemId: number) {
+  return store.filter((item) => item.id !== itemId);
+};
+
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
@@ -84,6 +89,12 @@ const productsSlice = createSlice({
       }
     },
 
+    deleteCart: (store, action) => {
+      store.cart = deleteCartItem(store.cart, action.payload.id)
+      store.cartCount = store.cartCount - 1;
+    },
+
+
     addFavorites: (store, action) => {
       store.favorites = AddProductFunc(
         store.favorites,
@@ -97,6 +108,12 @@ const productsSlice = createSlice({
       store.favorites = toggleProductFunc(store.favorites, action);
       store.favoritCounter = store.favoritCounter - 1;
     },
+
+    deleteFavorite: (store, action) => {
+      store.favorites = deleteCartItem(store.favorites, action.payload.id)
+      store.favoritCounter = store.favoritCounter - 1;
+    },
+
   },
 
   extraReducers: {
@@ -115,6 +132,6 @@ const productsSlice = createSlice({
   },
 });
 
-export const { addCart, removeCart, toggleFavorite, addFavorites } =
+export const { addCart, removeCart, toggleFavorite, addFavorites, deleteCart, deleteFavorite } =
   productsSlice.actions;
 export default productsSlice.reducer;

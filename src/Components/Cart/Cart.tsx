@@ -4,10 +4,18 @@ import { RootState } from "../../store/store";
 import { IDataProducts } from "../../Types/Types";
 import Card from "../common/Card/Card";
 import NoProduct from "../common/NoProduct/NoProduct";
+import DeleteBtn from '../common/DeleteBtn/DeleteBtn';
+import { useDispatch } from 'react-redux';
+import { deleteCart } from '../../store/productsSlice';
+import GoToProductsBtn from '../common/GoToProductsBtn/GoToProductsBtn';
 
 function Cart() {
   const allCarts = useSelector((store: RootState) => store.products.cart);
+  const dispatch = useDispatch()
 
+  const handlerCart = (id: number) => {
+    dispatch(deleteCart({ id }))
+  }
   return (
     <>
       {allCarts.length === 0 ? (
@@ -18,7 +26,7 @@ function Cart() {
           <div className={styles.cartWrapper}>
             {allCarts.map((items: IDataProducts) => {
               return (
-                <div className={styles.cartItems}>
+                <div className={styles.cartItems} key={items.id}>
                   <Card
                     img={items.image}
                     allProps={{ ...items }}
@@ -26,10 +34,12 @@ function Cart() {
                     nameProduct={items.name}
                     price={items.price}
                   />
+                  <DeleteBtn title='корзины' id={items.id} deleteProduct={handlerCart} />
                 </div>
               );
             })}
           </div>
+          <GoToProductsBtn />
         </section>
       )}
     </>

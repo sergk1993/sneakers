@@ -1,0 +1,27 @@
+@import '../../../scss/variable';
+
+.GoToProductsBtn {
+	display: block;
+	font-size: 9px;
+	font-weight: 900;
+	text-transform: uppercase;
+	color: #000;
+	padding: 15px;
+	border: transparent;
+	cursor: pointer;
+	background-color: #fff;
+	border-radius: 5px;
+
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+
+	&:hover {
+		background-color: #dadbdb;
+	}
+
+	@media screen and (max-width: 780px) {
+		font-size: 8px;
+	}
+
+}

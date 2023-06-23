@@ -54,7 +54,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
 
   return (
     <>
-      <article className={styles.cardMain}>
+      <article className={styles.cardMain} key={id}>
         {/* если товары больше нуля и товары равны, покажи иконку добавленного товара */}
         {cartCounter > 0 && findCart && (
           <span className={styles.cardMain__countCards}>{findCart.count}</span>

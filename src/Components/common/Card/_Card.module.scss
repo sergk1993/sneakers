@@ -11,6 +11,7 @@
 	justify-content: space-between;
 	border-radius: 5px;
 	width: 100%;
+	flex-grow: 1;
 
 	em {
 		font-style: normal;
@@ -100,6 +101,7 @@
 .priceBox {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 
 	&__priceBoxBtn {
 		display: flex;
