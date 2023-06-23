@@ -5,24 +5,27 @@ import { useState } from "react";
 import BurgerBtn from "../common/BurgerBtn/BurgerBtn";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import СreateGapForTheAmount from "../../utils/СreateGapForTheAmount";
 
 function Header() {
   const [clickBtn, setClickBtn] = useState(false);
-  const cartCount = useSelector(
-    (state: RootState) => state.products.cartCount
-  );
 
-const handlerClick = () => {
+  const cartCount = useSelector((state: RootState) => state.products.cartCount);
+  const cart = useSelector((state: RootState) => state.products.cart);
 
-}
-
- const favoriteCount = useSelector(
+  const favoriteCount = useSelector(
     (state: RootState) => state.products.favoritCounter
   );
+
+  const findAmount = cart.reduce(
+    (total, amount) => total + amount.price * amount.count,
+    0
+  );
+
+
   return (
     <>
       <BurgerBtn clickBtn={clickBtn} setClickBtn={setClickBtn} />
-
       <div
         className={`${styles.asideBurgerPanelBg}  ${
           clickBtn ? styles.activeBurgerPanelBg : ""
@@ -39,7 +42,7 @@ const handlerClick = () => {
       <header className={styles.headerMain}>
         <div className="container">
           <div className={styles.headerMainWrapper}>
-            <Link className={styles.headerTitle} to="/" title="На главную " >
+            <Link className={styles.headerTitle} to="/" title="На главную ">
               <img src={headerIcon} alt="header icon sneakers" />
               <div className={styles.headerTitleWrapper}>
                 <h1>Sneakers</h1>
@@ -53,7 +56,11 @@ const handlerClick = () => {
                   clickBtn ? styles.activeCart : ""
                 }`}
               >
-                <Link to="cart" className={styles.headerAboutCartLink} onClick={() =>  setClickBtn(false)}>
+                <Link
+                  to="cart"
+                  className={styles.headerAboutCartLink}
+                  onClick={() => setClickBtn(false)}
+                >
                   <span>{cartCount}</span>
                   <svg
                     width="20"
@@ -83,16 +90,19 @@ const handlerClick = () => {
                   </svg>
                 </Link>
                 <p>
-                  12364 <span> тенг</span>
+                  {СreateGapForTheAmount(findAmount)} <span> тенг</span>
                 </p>
               </div>
-              <Link to="favorite"  className={`${styles.headerFavoriteLink}  ${
-                    clickBtn ? styles.activeFavoriteSvg : ""
-                  }`} onClick={() =>  setClickBtn(false)}>
-                <span >{favoriteCount}</span>
+              <Link
+                to="favorite"
+                className={`${styles.headerFavoriteLink}  ${
+                  clickBtn ? styles.activeFavoriteSvg : ""
+                }`}
+                onClick={() => setClickBtn(false)}
+              >
+                <span>{favoriteCount}</span>
 
                 <svg
-                 
                   fill="none"
                   viewBox="0 0 192 192"
                   xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +110,7 @@ const handlerClick = () => {
                   <path d="M60.732 29.7C41.107 29.7 22 39.7 22 67.41c0 27.29 45.274 67.29 74 94.89 28.744-27.6 74-67.6 74-94.89 0-27.71-19.092-37.71-38.695-37.71C116 29.7 104.325 41.575 96 54.066 87.638 41.516 76 29.7 60.732 29.7z" />
                 </svg>
               </Link>
-              <Link to="profile" onClick={() =>  setClickBtn(false)}>
+              <Link to="profile" onClick={() => setClickBtn(false)}>
                 <svg
                   className={`${styles.headerProfileSvg}  ${
                     clickBtn ? styles.activeProfileSvg : ""
