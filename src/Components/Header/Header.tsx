@@ -6,13 +6,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import СreateGapForTheAmount from "../../utils/СreateGapForTheAmount";
 import { IDataProducts } from '../../Types/Types';
+import AsideBurgerWindow from '../AsideBurgerWindow/AsideBurgerWindow';
 
 function Header() {
   const [clickBtn, setClickBtn] = useState(false);
 
   const cartCount = useSelector((state: RootState) => state.products.cartCount);
   const cart = useSelector((state: RootState) => state.products.cart);
-  console.log(cart  );
+
   const favoriteCount = useSelector(
     (state: RootState) => state.products.favoritesCounter
   );
@@ -21,16 +22,9 @@ function Header() {
   return (
     <>
       <BurgerBtn clickBtn={clickBtn} setClickBtn={setClickBtn} />
-      <div
-        className={`${styles.asideBurgerPanelBg}  ${clickBtn ? styles.activeBurgerPanelBg : ""
-          }`}
-        onClick={() => setClickBtn(false)}
-      ></div>
 
-      <div
-        className={`${styles.asideBurgerPanel} ${clickBtn ? styles.active : ""
-          }`}
-      ></div>
+      <AsideBurgerWindow clickBtn={clickBtn} setClickBtn={() => setClickBtn(false)} />
+
 
       <header className={styles.headerMain}>
         <div className="container">

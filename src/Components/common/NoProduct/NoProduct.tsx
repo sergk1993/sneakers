@@ -1,7 +1,7 @@
 import styles from "./_NoProduct.module.scss";
 
 function NoProduct({ title }: { title: string }) {
- 
+
   return (
     <div className={styles.noProductMain}>
       <h3>В {title} пусто</h3>

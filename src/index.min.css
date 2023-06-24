@@ -152,6 +152,7 @@
     opacity: 1;
     transition-delay: 0.6s;
   }
+  
   /* боковая панель */
   .asideBurgerPanelBg {
     display: block;

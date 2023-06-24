@@ -1,9 +1,5 @@
 @import '../../scss/variable';
 
-.asideBurgerPanel,
-.asideBurgerPanelBg {
-	display: none;
-}
 
 .headerMain {
 	padding: 50px 0;
@@ -235,45 +231,4 @@
 	}
 
 
-
-	/* боковая панель */
-	.asideBurgerPanelBg {
-		display: block;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: transparent;
-		// width: 100%;
-		// height: 100vh;
-		opacity: 0;
-		transition: opacity 300ms ease-in-out, background-color 300ms ease-in-out, visibility 1s ease;
-		z-index: 10;
-		visibility: hidden;
-
-		&.activeBurgerPanelBg {
-			background-color: #000000d6;
-			opacity: 1;
-			visibility: visible;
-
-		}
-	}
-
-
-	.asideBurgerPanel {
-		display: block;
-		position: fixed;
-		right: -350px;
-		display: block;
-		width: 230px;
-		height: 100vh;
-		background: $color-main-aside;
-		transition: right 0.40s ease-in-out;
-		z-index: 11;
-
-		&.active {
-			right: 0px;
-		}
-	}
 }

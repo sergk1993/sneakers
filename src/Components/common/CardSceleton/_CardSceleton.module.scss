@@ -42,19 +42,26 @@
 		left: 10px;
 		top: 10px;
 		width: 30px;
-		height: 30px;
+		height: 25px;
 		background-color: $color-main-btn-gray;
 		border-radius: 5px;
-
 	}
-
+	&__smallText {
+		display: block;
+		width: 80%;
+		height: 20px;
+		background-color: $color-main-btn-gray;
+		border-radius: 5px;
+		margin-bottom: 10px;
+	}
+	
 	&__priceBox {
 		display: flex;
 		justify-content: space-between;
 
 
 		p {
-			width: 80%;
+			width: 60%;
 			background-color: $color-main-btn-gray;
 			border-radius: 5px;
 		}
@@ -72,4 +79,43 @@
 		}
 	}
 
+}
+
+
+
+@media screen and (max-width:780px) {
+	.cardSkeleton {
+		
+		&__smallText {
+			margin-bottom: 5px;
+		}
+
+		&__favoriteBtn {
+			width: 25px;
+			height: 25px;
+		}
+		
+		&__priceBox {
+			display: flex;
+			justify-content: flex-start;
+
+			p {
+				width: 20px;
+				height: 20px;
+				margin-right: 5px;
+			}
+			button {
+				width: 20px;
+				height: 20px;
+			}
+			
+		}
+	}
+}
+
+
+@media screen and (max-width:480px) {
+	.cardSkeleton {
+		height: 220px;
+	}
 }

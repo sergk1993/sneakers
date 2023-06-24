@@ -1,0 +1,69 @@
+@import '../../scss/variable';
+
+
+.asideBurgerWindow,
+.asideBurgerWindowPanel {
+	display: none;
+}
+
+.asideBurgerWindowCard {
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+
+.asideBurgerWindowCardMargin {
+	padding-top: 50px;
+	padding-bottom: 30px;
+	background: darken($color-main-aside, 10%);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+@media screen and (max-width: 480px) {
+
+	.asideBurgerWindowPanel {
+		display: block;
+		position: fixed;
+		padding-top: 90px;
+		right: -350px;
+		display: block;
+		width: 240px;
+		height: 100vh;
+		background: darken($color-main-aside, 10%);
+		transition: right 0.40s ease-in-out;
+		z-index: 11;
+		overflow-y: scroll;
+
+		&.activewindowPanel {
+			right: 0px;
+			background: darken($color-main-aside, 10%);
+
+		}
+	}
+
+	/* боковая панель */
+	.asideBurgerWindow {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: transparent;
+		opacity: 1;
+		transition: opacity 300ms ease-in-out, background-color 300ms ease-in-out, visibility 1s ease;
+		z-index: 10;
+		visibility: hidden;
+
+		&.asideBurgerWindowActiveBg {
+			display: block;
+			background-color: #000000d6;
+			opacity: 1;
+			visibility: visible;
+
+		}
+	}
+}
