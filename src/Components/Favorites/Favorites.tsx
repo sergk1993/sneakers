@@ -13,10 +13,6 @@ function Favorites() {
   const allCarts = useSelector((store: RootState) => store.products.favorites);
   const dispatch = useDispatch()
 
-  const handlerCart = (id: number) => {
-    dispatch(deleteFavorite({ id }))
-  }
-
   return (
     <>
       {allCarts.length === 0 ? (
@@ -36,7 +32,7 @@ function Favorites() {
                     price={items.price}
                   />
                   <button className={styles.favoriteAddToCart} onClick={() => dispatch(addCart({ ...items }))}>добавить в корзину</button>
-                  <DeleteBtn title='избранных' id={items.id} deleteProduct={handlerCart} />
+                  <DeleteBtn title='избранных' id={items.id} deleteAction={deleteFavorite} />
                 </div>
               );
             })}

@@ -19,6 +19,7 @@ const initialState = {
   error: "" as any,
   favorites: getItemFromLocalStorage('favorites', []),
   favoritesCounter: getItemFromLocalStorage('favoritesCounter', 0),
+  aboutProduct: getItemFromLocalStorage('aboutProduct', [])
 };
 
 export const fetchProducts: any = createAsyncThunk(
@@ -110,9 +111,12 @@ const productsSlice = createSlice({
     },
 
     deleteCart: (store, action) => {
+      const findTheSame = store.cart.find((el:IDataProducts) => el.id === action.payload.id)
       store.cart = deleteCartItem(store.cart, action.payload.id)
-      store.cartCount = store.cartCount - 1;
-      
+      if (findTheSame){
+        store.cartCount = store.cartCount - 1;
+      }
+
       if (store.cart.length === 0) {
         localStorage.removeItem('cartData');
         localStorage.removeItem('cartCount');
@@ -151,7 +155,7 @@ const productsSlice = createSlice({
     deleteFavorite: (store, action) => {
       store.favorites = deleteCartItem(store.favorites, action.payload.id)
       store.favoritesCounter = store.favoritesCounter - 1;
-      
+
       if (store.favorites.length === 0) {
         localStorage.removeItem('favorites');
         localStorage.removeItem('favoritesCounter');
@@ -161,6 +165,11 @@ const productsSlice = createSlice({
       }
     },
 
+    aboutProduct: (store, action) => {
+      let findTheSameProduct = store.products.filter((items: IDataProducts) => items.id === action.payload.id)
+      store.aboutProduct = findTheSameProduct
+      localStorage.setItem('aboutProduct', JSON.stringify(findTheSameProduct))
+    }
   },
 
   extraReducers: {
@@ -179,6 +188,6 @@ const productsSlice = createSlice({
   },
 });
 
-export const { addCart, removeCart, toggleFavorite, addFavorites, deleteCart, deleteFavorite } =
+export const { addCart, removeCart, toggleFavorite, addFavorites, deleteCart, deleteFavorite, aboutProduct } =
   productsSlice.actions;
 export default productsSlice.reducer;

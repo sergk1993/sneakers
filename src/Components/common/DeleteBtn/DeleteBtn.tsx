@@ -1,15 +1,18 @@
+import { useDispatch } from 'react-redux';
 import styles from "./DeleteBtn.module.scss";
 
 type DeleteBtnType = {
   title: string,
-  id:number,
-  deleteProduct: (id:number) => void
+  id: number,
+  deleteAction: (id: {id:number}) => any
 };
+/* принимает название, экшен для удаления, кликнутый id */
+function DeleteBtn({ title, deleteAction, id }: DeleteBtnType) {
+  const dispatch = useDispatch()
 
-function DeleteBtn({ title, deleteProduct, id}: DeleteBtnType) {
   return (
     <>
-      <button className={styles.deleteBtn} onClick={() => deleteProduct(id)}> удалить из {title}</button>
+      <button className={styles.deleteBtn} onClick={() => dispatch(deleteAction({id:id}))}> удалить из {title}</button>
     </>
   );
 }

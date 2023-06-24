@@ -1,11 +1,12 @@
 import styles from "./_Card.module.scss";
 import noPhoto from "../../../assets/img/noSneaker.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IDataProducts } from "../../../Types/Types";
 import { RootState } from "../../../store/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
+  aboutProduct,
   addCart,
   addFavorites,
   removeCart,
@@ -27,15 +28,24 @@ function findTheSameId(arr: IDataProducts[], id: number) {
 }
 
 function Card({ img, nameProduct, price, id, allProps }: CardType) {
+  const navigate = useNavigate()
   const favorites = useSelector((state: RootState) => state.products.favorites);
   const carts = useSelector((state: RootState) => state.products.cart);
+  const dispatch = useDispatch();
+
+
 
   /* сколько определенных товаров передано в корзину */
   const cartCounter = useSelector(
     (state: RootState) => state.products.cartCount
   );
 
-  const dispatch = useDispatch();
+/* фукнция для перехода на страницу о товаре */
+  const handlerToProduct = (id: number) => {
+    dispatch(aboutProduct({id}))
+    navigate(`/about-product/${id}`)
+  }
+
 
   /* проверяю есть ли одинаковые товары */
   const findCart: any = carts.find((el:IDataProducts) => el.id === id);
@@ -72,9 +82,9 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
           </svg>
         </button>
 
-        <Link to={`about-product/${id}`}>
-          <img src={img ? img : noPhoto} alt="sneakers" />
-        </Link>
+        {/* <Link to={`about-product/${id}`} onClick={() => dispatch(aboutProduct({id}))} > */}
+          <img src={img ? img : noPhoto} alt="sneakers" onClick={()=> handlerToProduct(id)}/>
+        {/* </Link> */}
         <h3>{nameProduct}</h3>
 
         <div className={styles.priceBox}>
