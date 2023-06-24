@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Root from './Components/Root/Root';
 
@@ -12,7 +12,7 @@ import Favorites from './Components/Favorites/Favorites';
 import AboutProduct from './Components/AboutProduct/AboutProduct';
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Root />,
