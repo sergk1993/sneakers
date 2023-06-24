@@ -38,11 +38,11 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
   const dispatch = useDispatch();
 
   /* проверяю есть ли одинаковые товары */
-  const findCart: any = carts.find((el) => el.id === id);
+  const findCart: any = carts.find((el:IDataProducts) => el.id === id);
 
   /* переключалка для favorites, если нет товара добавь товар, если есть прокинь его айди */
   const handlerFavorite = (id: number) => {
-    const findToggleFavorite: any = favorites.find((el) => el.id === id);
+    const findToggleFavorite: any = favorites.find((el:IDataProducts) => el.id === id);
     if (findToggleFavorite) {
       /* если есть товар в корзине прокидываю айди */
       dispatch(toggleFavorite({ id: findToggleFavorite.id }));
@@ -73,7 +73,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
         </button>
 
         <Link to={`about-product/${id}`}>
-          <img src={img ? img : noPhoto} alt="sneakser" />
+          <img src={img ? img : noPhoto} alt="sneakers" />
         </Link>
         <h3>{nameProduct}</h3>
 

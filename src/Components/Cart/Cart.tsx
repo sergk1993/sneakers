@@ -14,7 +14,6 @@ import СreateGapForTheAmount from '../../utils/СreateGapForTheAmount';
 function Cart() {
   const allCarts = useSelector((store: RootState) => store.products.cart);
   const dispatch = useDispatch()
-
   const handlerCart = (id: number) => {
     dispatch(deleteCart({ id }))
   }
@@ -43,7 +42,7 @@ function Cart() {
           </div>
           {/* функц из utils, первая разбивает число на пробелы, вторая считает price */}
           <div className={styles.cartWrapper__price}><span>Общая цена:</span> {СreateGapForTheAmount(CalculateAllPrice(allCarts))}</div>
-            <button className={styles.cartBuyAllProducts}> купить все товары</button>
+          <button className={styles.cartBuyAllProducts} onClick={() => alert(`поздравляю вас с покупкой, общая сумма: ${СreateGapForTheAmount(CalculateAllPrice(allCarts))} \nв будущем здесь будет форма с оплатой. `)}> купить все товары</button>
           <GoToProductsBtn />
         </section>
       )}

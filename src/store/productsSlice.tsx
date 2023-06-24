@@ -1,14 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IDataProducts } from "../Types/Types";
 
+function getItemFromLocalStorage(key: string, defaultValue: any) {
+  try {
+    const item = localStorage.getItem(key);
+    return item !== null ? JSON.parse(item) : defaultValue;
+  } catch (err) {
+    localStorage.removeItem(key)
+    return undefined
+  }
+}
+
 const initialState = {
   products: [] as Array<IDataProducts>,
-  cart: [] as Array<IDataProducts>,
+  cart: getItemFromLocalStorage('cartData', []),
+  cartCount: getItemFromLocalStorage('cartCount', 0),
   isLoading: false as boolean,
   error: "" as any,
-  cartCount: 0 as number,
-  favorites: [] as Array<IDataProducts>,
-  favoritCounter: 0 as number,
+  favorites: getItemFromLocalStorage('favorites', []),
+  favoritesCounter: getItemFromLocalStorage('favoritesCounter', 0),
 };
 
 export const fetchProducts: any = createAsyncThunk(
@@ -35,7 +45,6 @@ export const fetchProducts: any = createAsyncThunk(
 function AddProductFunc(
   initialStoreProperty: Array<IDataProducts>,
   action: { payload: IDataProducts },
-  counter: number
 ) {
   let findTheSameProduct = initialStoreProperty.findIndex(
     (el) => el.id === action.payload.id
@@ -68,50 +77,88 @@ const productsSlice = createSlice({
   reducers: {
     addCart: (store, action) => {
       const findTheSameProduct = store.cart.findIndex(
-        (el) => el.id === action.payload.id
+        (el: IDataProducts) => el.id === action.payload.id
       );
-      store.cart = AddProductFunc(store.cart, action, store.cartCount);
+      store.cart = AddProductFunc(store.cart, action);
       if (findTheSameProduct === -1) {
         store.cartCount = store.cartCount + 1;
       }
+      localStorage.setItem('cartData', JSON.stringify(store.cart));
+      localStorage.setItem('cartCount', JSON.stringify(store.cartCount));
     },
 
     removeCart: (store, action) => {
-      const find = store.cart.findIndex((el) => el.id === action.payload.id);
+      const find = store.cart.findIndex((el: IDataProducts) => el.id === action.payload.id);
 
       if (find !== -1) {
         if (store.cart[find].count > 1) {
           store.cart[find].count -= 1;
         } else {
-          store.cart = store.cart.filter((el) => el.id !== action.payload.id);
+          store.cart = store.cart.filter((el: IDataProducts) => el.id !== action.payload.id);
           store.cartCount -= 1;
         }
       }
+
+      if (store.cart.length === 0) {
+        localStorage.removeItem('cartData');
+        localStorage.removeItem('cartCount');
+      } else {
+        localStorage.setItem('cartData', JSON.stringify(store.cart));
+        localStorage.setItem('cartCount', JSON.stringify(store.cartCount));
+      }
+
     },
 
     deleteCart: (store, action) => {
       store.cart = deleteCartItem(store.cart, action.payload.id)
       store.cartCount = store.cartCount - 1;
+      
+      if (store.cart.length === 0) {
+        localStorage.removeItem('cartData');
+        localStorage.removeItem('cartCount');
+      } else {
+        localStorage.setItem('cartData', JSON.stringify(store.cart));
+        localStorage.setItem('cartCount', JSON.stringify(store.cartCount));
+      }
     },
 
 
     addFavorites: (store, action) => {
       store.favorites = AddProductFunc(
         store.favorites,
-        action,
-        store.favoritCounter
+        action
       );
-      store.favoritCounter = store.favoritCounter + 1;
+      store.favoritesCounter = store.favoritesCounter + 1;
+
+      localStorage.setItem('favorites', JSON.stringify(store.favorites));
+      localStorage.setItem('favoritesCounter', JSON.stringify(store.favoritesCounter));
     },
 
     toggleFavorite: (store, action) => {
       store.favorites = toggleProductFunc(store.favorites, action);
-      store.favoritCounter = store.favoritCounter - 1;
+      store.favoritesCounter = store.favoritesCounter - 1;
+
+      if (store.favorites.length === 0) {
+        localStorage.removeItem('favorites');
+        localStorage.removeItem('favoritesCounter');
+      } else {
+        localStorage.setItem('favorites', JSON.stringify(store.favorites));
+        localStorage.setItem('favoritesCounter', JSON.stringify(store.favoritesCounter));
+      }
+
     },
 
     deleteFavorite: (store, action) => {
       store.favorites = deleteCartItem(store.favorites, action.payload.id)
-      store.favoritCounter = store.favoritCounter - 1;
+      store.favoritesCounter = store.favoritesCounter - 1;
+      
+      if (store.favorites.length === 0) {
+        localStorage.removeItem('favorites');
+        localStorage.removeItem('favoritesCounter');
+      } else {
+        localStorage.setItem('favorites', JSON.stringify(store.favorites));
+        localStorage.setItem('favoritesCounter', JSON.stringify(store.favoritesCounter));
+      }
     },
 
   },

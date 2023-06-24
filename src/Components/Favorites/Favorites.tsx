@@ -6,7 +6,7 @@ import Card from "../common/Card/Card";
 import NoProduct from "../common/NoProduct/NoProduct";
 import DeleteBtn from "../common/DeleteBtn/DeleteBtn";
 import { useDispatch } from 'react-redux';
-import { deleteFavorite } from '../../store/productsSlice';
+import { addCart, deleteFavorite } from '../../store/productsSlice';
 import GoToProductsBtn from '../common/GoToProductsBtn/GoToProductsBtn';
 
 function Favorites() {
@@ -35,6 +35,7 @@ function Favorites() {
                     nameProduct={items.name}
                     price={items.price}
                   />
+                  <button className={styles.favoriteAddToCart} onClick={() => dispatch(addCart({ ...items }))}>добавить в корзину</button>
                   <DeleteBtn title='избранных' id={items.id} deleteProduct={handlerCart} />
                 </div>
               );

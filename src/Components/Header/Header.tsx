@@ -5,36 +5,31 @@ import BurgerBtn from "../common/BurgerBtn/BurgerBtn";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import СreateGapForTheAmount from "../../utils/СreateGapForTheAmount";
+import { IDataProducts } from '../../Types/Types';
 
 function Header() {
   const [clickBtn, setClickBtn] = useState(false);
 
   const cartCount = useSelector((state: RootState) => state.products.cartCount);
   const cart = useSelector((state: RootState) => state.products.cart);
-
+  console.log(cart  );
   const favoriteCount = useSelector(
-    (state: RootState) => state.products.favoritCounter
+    (state: RootState) => state.products.favoritesCounter
   );
 
-  const findAmount = cart.reduce(
-    (total, amount) => total + amount.price * amount.count,
-    0
-  );
-
+  const findAmount = cart.reduce((total: number, amount: IDataProducts) => total + amount.price * amount.count, 0);
   return (
     <>
       <BurgerBtn clickBtn={clickBtn} setClickBtn={setClickBtn} />
       <div
-        className={`${styles.asideBurgerPanelBg}  ${
-          clickBtn ? styles.activeBurgerPanelBg : ""
-        }`}
+        className={`${styles.asideBurgerPanelBg}  ${clickBtn ? styles.activeBurgerPanelBg : ""
+          }`}
         onClick={() => setClickBtn(false)}
       ></div>
 
       <div
-        className={`${styles.asideBurgerPanel} ${
-          clickBtn ? styles.active : ""
-        }`}
+        className={`${styles.asideBurgerPanel} ${clickBtn ? styles.active : ""
+          }`}
       ></div>
 
       <header className={styles.headerMain}>
@@ -138,9 +133,8 @@ function Header() {
 
             <div className={styles.headerAboutIcons}>
               <div
-                className={`${styles.headerAboutCart} ${
-                  clickBtn ? styles.activeCart : ""
-                }`}
+                className={`${styles.headerAboutCart} ${clickBtn ? styles.activeCart : ""
+                  }`}
               >
                 <Link
                   to="cart"
@@ -181,9 +175,8 @@ function Header() {
               </div>
               <Link
                 to="favorite"
-                className={`${styles.headerFavoriteLink}  ${
-                  clickBtn ? styles.activeFavoriteSvg : ""
-                }`}
+                className={`${styles.headerFavoriteLink}  ${clickBtn ? styles.activeFavoriteSvg : ""
+                  }`}
                 onClick={() => setClickBtn(false)}
               >
                 <span>{favoriteCount}</span>
@@ -198,9 +191,8 @@ function Header() {
               </Link>
               <Link to="profile" onClick={() => setClickBtn(false)}>
                 <svg
-                  className={`${styles.headerProfileSvg}  ${
-                    clickBtn ? styles.activeProfileSvg : ""
-                  }`}
+                  className={`${styles.headerProfileSvg}  ${clickBtn ? styles.activeProfileSvg : ""
+                    }`}
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
