@@ -1,0 +1,16 @@
+.footerMain {
+	padding: 20px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	a {
+			svg {
+				width: 100%;
+				display: block;
+			}
+	}
+	span {
+		text-transform: uppercase;
+		font-size: 8px;
+	}
+}

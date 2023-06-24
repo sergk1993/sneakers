@@ -7,7 +7,7 @@ function ErrorPage() {
     <section className={styles.errorMain}>
       <div className={styles.errorWrapper}>
         <img src={errorImg} alt="Error img" />
-        <p> Oops... Something wrong</p>
+        <p> Ой... Такой страницы не существует</p>
         <Link to="/">Вернуться на главную</Link>
       </div>
     </section>
