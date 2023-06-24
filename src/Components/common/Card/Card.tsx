@@ -59,7 +59,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
         {cartCounter > 0 && findCart && (
           <span className={styles.cardMain__countCards}>{findCart.count}</span>
         )}
-        <button
+        <button title='добавить/удалить товар в избранные '
           className={styles.cardMain__favoriteBtn}
           onClick={() => handlerFavorite(id)}
         >
@@ -90,7 +90,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
           </p>
 
           <div className={styles.priceBox__priceBoxBtn}>
-            <button
+            <button title='уменьшить товар из корзины'
               onClick={() => dispatch(removeCart({ id: id }))}
               className={findTheSameId(carts, id) ? styles.activeMinus : ""}
             >
@@ -103,7 +103,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
               </svg>
             </button>
 
-            <button
+            <button title='добавить товар в корзину'
               onClick={() => dispatch(addCart({ ...allProps }))}
               className={findTheSameId(carts, id) ? styles.activePlus : ""}
             >

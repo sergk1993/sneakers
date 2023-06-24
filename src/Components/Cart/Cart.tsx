@@ -8,6 +8,8 @@ import DeleteBtn from '../common/DeleteBtn/DeleteBtn';
 import { useDispatch } from 'react-redux';
 import { deleteCart } from '../../store/productsSlice';
 import GoToProductsBtn from '../common/GoToProductsBtn/GoToProductsBtn';
+import CalculateAllPrice from '../../utils/CalculateAllPrice';
+import СreateGapForTheAmount from '../../utils/СreateGapForTheAmount';
 
 function Cart() {
   const allCarts = useSelector((store: RootState) => store.products.cart);
@@ -39,6 +41,9 @@ function Cart() {
               );
             })}
           </div>
+          {/* функц из utils, первая разбивает число на пробелы, вторая считает price */}
+          <div className={styles.cartWrapper__price}><span>Общая цена:</span> {СreateGapForTheAmount(CalculateAllPrice(allCarts))}</div>
+            <button className={styles.cartBuyAllProducts}> купить все товары</button>
           <GoToProductsBtn />
         </section>
       )}

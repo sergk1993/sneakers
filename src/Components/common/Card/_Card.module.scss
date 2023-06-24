@@ -56,8 +56,10 @@
 		border: transparent;
 		text-align-last: left;
 		position: absolute;
-		left: 0;
+		left: 5px;
 		top: 5px;
+		margin: 0;
+		padding: 0;
 
 		svg {
 			width: 30px;
@@ -147,6 +149,8 @@
 		position: relative;
 		top: 0;
 		transition: top 0.1s ease-out, box-shadow 0.1s ease-in-out;
+		margin: 0;
+		padding: 5px;
 
 		@media screen and (min-width: 780px) {
 			&:hover {
