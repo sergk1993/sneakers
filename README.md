@@ -6,4 +6,4 @@
 
 [ССЫЛКА НА САЙТ](https://sergk1993.github.io/sneakers/)
 
-![Сайт Elena](./assets/img/redme-sneakers.jpg)
+![Сайт Elena](./assets/img/redme-sneakers.jpg) 
