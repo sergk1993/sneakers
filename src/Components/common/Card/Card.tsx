@@ -40,19 +40,19 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
     (state: RootState) => state.products.cartCount
   );
 
-/* фукнция для перехода на страницу о товаре */
+  /* фукнция для перехода на страницу о товаре */
   const handlerToProduct = (id: number) => {
-    dispatch(aboutProduct({id}))
+    dispatch(aboutProduct({ id }))
     navigate(`/about-product/${id}`)
   }
 
 
   /* проверяю есть ли одинаковые товары */
-  const findCart: any = carts.find((el:IDataProducts) => el.id === id);
+  const findCart: any = carts.find((el: IDataProducts) => el.id === id);
 
   /* переключалка для favorites, если нет товара добавь товар, если есть прокинь его айди */
   const handlerFavorite = (id: number) => {
-    const findToggleFavorite: any = favorites.find((el:IDataProducts) => el.id === id);
+    const findToggleFavorite: any = favorites.find((el: IDataProducts) => el.id === id);
     if (findToggleFavorite) {
       /* если есть товар в корзине прокидываю айди */
       dispatch(toggleFavorite({ id: findToggleFavorite.id }));
@@ -82,9 +82,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
           </svg>
         </button>
 
-        {/* <Link to={`about-product/${id}`} onClick={() => dispatch(aboutProduct({id}))} > */}
-          <img src={img ? img : noPhoto} alt="sneakers" onClick={()=> handlerToProduct(id)}/>
-        {/* </Link> */}
+        <img src={img ? img : noPhoto} alt="sneakers" onClick={() => handlerToProduct(id)} />
         <h3>{nameProduct}</h3>
 
         <div className={styles.priceBox}>

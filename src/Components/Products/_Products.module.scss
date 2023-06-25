@@ -10,13 +10,11 @@
 
 	@media screen and (max-width: 780px) {
 		gap: 10px;
-		grid-template-columns: repeat(3, 148px);
-		grid-template-rows: repeat(1, 260px);
+		grid-template-columns: repeat(3, 1fr);
 	}
 
 	@media screen and (max-width: 480px) {
-		grid-template-columns: repeat(2, 140px);
-		grid-template-rows: repeat(1, 220px);
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 }

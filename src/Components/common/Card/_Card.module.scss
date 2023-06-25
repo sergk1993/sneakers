@@ -48,7 +48,7 @@
 		font-weight: 400;
 		font-size: 14px;
 		line-height: 17px;
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
 
 	/* иконка с верху favorite */
@@ -105,11 +105,12 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	align-items: center;
 
 	&__priceBoxBtn {
 		display: flex;
 		align-items: flex-end;
-
+		margin-top: 10px;
 		button:first-child {
 			margin-right: 5px;
 		}
@@ -121,10 +122,11 @@
 
 	&__countPrice {
 		font-weight: 700;
-		font-size: 14px;
-		line-height: 17px;
+		font-size: 18px;
+		line-height: 20px;
 		color: $color-main-black;
 		margin-right: 3px;
+		white-space: nowrap;
 	}
 
 	p {
@@ -140,8 +142,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 25px;
-		height: 25px;
+		width: 35px;
+		height: 35px;
 		background: $color-main-whiteBg;
 		border: 1px solid $color-main-whiteBg;
 		border-radius: 8px;
@@ -176,8 +178,17 @@
 			z-index: 10;
 			box-shadow: inset 1px 1px 10px #555;
 		}
-	}
 
+		
+	}
+	@media screen and (max-width: 1024px) {
+		& {
+			display: block;
+			 p {
+				margin-bottom: 5px;
+			 }
+		}
+	}
 	@media screen and (max-width: 780px) {
 		& {
 			display: block;
@@ -185,11 +196,6 @@
 			p {
 				margin-bottom: 5px;
 			}
-		}
-
-		&__countPrice {
-			font-size: 12px;
-			line-height: 15px;
 		}
 	}
 }
