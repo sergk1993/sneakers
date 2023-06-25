@@ -20,6 +20,7 @@ type CardType = {
   price: string | number;
   id: number;
   allProps: IDataProducts;
+  setClickBtn?: any
 };
 
 /* поиск одинакового айди товара true / false */
@@ -27,7 +28,7 @@ function findTheSameId(arr: IDataProducts[], id: number) {
   return arr.some((el) => el.id === id);
 }
 
-function Card({ img, nameProduct, price, id, allProps }: CardType) {
+function Card({ img, nameProduct, price, id, allProps, setClickBtn }: CardType) {
   const navigate = useNavigate()
   const favorites = useSelector((state: RootState) => state.products.favorites);
   const carts = useSelector((state: RootState) => state.products.cart);
@@ -44,8 +45,12 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
   const handlerToProduct = (id: number) => {
     dispatch(aboutProduct({ id }))
     navigate(`/about-product/${id}`)
+    if (setClickBtn) {
+      setClickBtn(false)
+    }
   }
 
+  
 
   /* проверяю есть ли одинаковые товары */
   const findCart: any = carts.find((el: IDataProducts) => el.id === id);
@@ -82,7 +87,7 @@ function Card({ img, nameProduct, price, id, allProps }: CardType) {
           </svg>
         </button>
 
-        <img src={img ? img : noPhoto} alt="sneakers" onClick={() => handlerToProduct(id)} />
+        <img src={img ? img : noPhoto} alt="sneakers" onClick={() => handlerToProduct(id) } />
         <h3>{nameProduct}</h3>
 
         <div className={styles.priceBox}>

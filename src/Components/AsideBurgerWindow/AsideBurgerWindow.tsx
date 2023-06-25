@@ -39,7 +39,9 @@ function AsideBurgerWindow({ setClickBtn, clickBtn }: AsideBurgerWindowType) {
 									id={items.id}
 									img={items.image}
 									nameProduct={items.name}
-									price={items.price} />
+									price={items.price}
+									setClickBtn={setClickBtn}
+									/>
 
 							</div>
 						)
