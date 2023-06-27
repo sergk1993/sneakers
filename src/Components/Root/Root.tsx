@@ -4,6 +4,8 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../store/productsSlice";
+import ScrollPageToTop from '../../utils/ScrollPageToTop';
+import ButtonToTop from '../common/ButtonToTop/ButtonToTop';
 
 function Root() {
   const dispatch = useDispatch();
@@ -13,15 +15,19 @@ function Root() {
   }, []);
 
   return (
-    <div className="mainWrapper">
-      <Header />
+    <>
+      <ScrollPageToTop />
+      <ButtonToTop />
+      <div className="mainWrapper">
+        <Header />
 
-      <main className="container">
-        <Outlet />
-      </main>
+        <main className="container">
+          <Outlet />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }
 

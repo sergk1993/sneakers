@@ -1,0 +1,41 @@
+@import '../../../scss/variable';
+
+.btnToTopMain {
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	width: 40px;
+	height: 40px;
+	border: none;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 20;
+	background-color: $color-btn-black;
+	border-radius: 50%;
+	transition: background-color 200ms ease-in-out;
+	transform: translateX(-50%);
+
+	svg {
+		width: 15px;
+		height: 15px;
+		stroke: $color-btn-white ;
+		transition: margin-bottom 200ms ease-in-out, width 200ms ease-in-out, height 200ms ease-in-out;
+
+	}
+
+	@media screen and (min-width:780px) {
+		&:hover {
+			background-color: darken($color-btn-white, 55%);
+		}
+
+		&:hover svg {
+			margin-bottom: 5px;
+			width: 20px;
+			height: 20px;
+		}
+
+	}
+}
