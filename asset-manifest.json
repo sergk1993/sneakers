@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sneakers/static/css/main.69e46eab.css",
-    "main.js": "/sneakers/static/js/main.658acb24.js",
+    "main.css": "/sneakers/static/css/main.dbb153a8.css",
+    "main.js": "/sneakers/static/js/main.1ca319e2.js",
     "static/media/Inter-Bold.woff": "/sneakers/static/media/Inter-Bold.1e547cd04bfe2dae1f98.woff",
     "static/media/Inter-SemiBold.woff": "/sneakers/static/media/Inter-SemiBold.7f6c3678e245486167d9.woff",
     "static/media/Inter-Regular.woff": "/sneakers/static/media/Inter-Regular.0d6f7c99e635f1fec4c9.woff",
@@ -12,11 +12,11 @@
     "static/media/404.png": "/sneakers/static/media/404.0dd4675fb9c7ebcdb378.png",
     "static/media/noSneaker.png": "/sneakers/static/media/noSneaker.29ec10d95cdc5e02d65f.png",
     "index.html": "/sneakers/index.html",
-    "main.69e46eab.css.map": "/sneakers/static/css/main.69e46eab.css.map",
-    "main.658acb24.js.map": "/sneakers/static/js/main.658acb24.js.map"
+    "main.dbb153a8.css.map": "/sneakers/static/css/main.dbb153a8.css.map",
+    "main.1ca319e2.js.map": "/sneakers/static/js/main.1ca319e2.js.map"
   },
   "entrypoints": [
-    "static/css/main.69e46eab.css",
-    "static/js/main.658acb24.js"
+    "static/css/main.dbb153a8.css",
+    "static/js/main.1ca319e2.js"
   ]
 }
